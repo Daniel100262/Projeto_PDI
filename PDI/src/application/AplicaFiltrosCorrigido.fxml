@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="627.0" prefWidth="1307.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AplicaFiltrosController">
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text rotate="-56.3" strokeType="OUTSIDE" strokeWidth="0.0" text="PDI" wrappingWidth="144.9656524658203">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+               <effect>
+                  <Reflection />
+               </effect>
+            </Text>
+            <HBox prefHeight="100.0" prefWidth="516.0">
+               <children>
+                  <Label fx:id="lblR" prefHeight="84.0" prefWidth="161.0" text="R" textFill="RED">
+                     <font>
+                        <Font size="37.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblG" prefHeight="84.0" prefWidth="183.0" text="G" textFill="#1eff00">
+                     <font>
+                        <Font size="37.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblB" prefHeight="84.0" prefWidth="183.0" text="B" textFill="#5100ff">
+                     <font>
+                        <Font size="37.0" />
+                     </font>
+                  </Label>
+                  <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                    <buttons>
+                        <VBox prefHeight="100.0" prefWidth="148.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#abreImagem1" text="Selecionar Imagem 1" />
+                              <Button mnemonicParsing="false" onAction="#abreImagem2" text="Selecionar Imagem 2" />
+                            <Button mnemonicParsing="false" onAction="#salvarImagem" prefHeight="25.0" prefWidth="128.0" text="Salvar" />
+                              <Button mnemonicParsing="false" onAction="#abreModalHistograma" prefHeight="25.0" prefWidth="129.0" text="Histograma" />
+                           </children>
+                        </VBox>
+                    </buttons>
+                  </ButtonBar>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <Accordion BorderPane.alignment="CENTER">
+        <panes>
+          <TitledPane animated="false" text="Tons de Cinza">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#cinzaAritmetica" text="Aplicar cinza aritmetico" />
+                        <Label layoutX="14.0" layoutY="63.0" text="\%R" />
+                        <Label layoutX="14.0" layoutY="86.0" text="\%G" />
+                        <Label layoutX="14.0" layoutY="109.0" text="\%B" />
+                        <TextField fx:id="pcr" layoutX="37.0" layoutY="59.0" />
+                        <TextField fx:id="pcg" layoutX="37.0" layoutY="82.0" />
+                        <TextField fx:id="pcb" layoutX="37.0" layoutY="105.0" />
+                        <Button layoutX="23.0" layoutY="164.0" mnemonicParsing="false" onAction="#cinzaPonderado" text="Aplicar cinza ponderado" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+          <TitledPane animated="false" text="Limiarização">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Slider fx:id="sliLimiar" layoutX="30.0" layoutY="21.0" />
+                        <Button layoutX="41.0" layoutY="54.0" mnemonicParsing="false" onAction="#limirizar" text="Aplicar limiarização" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+          <TitledPane animated="false" text="Negativa">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="41.0" layoutY="25.0" mnemonicParsing="false" onAction="#negativar" text="Aplicar negativa" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+            <TitledPane animated="false" layoutX="10.0" layoutY="60.0" text="Adição e subtração">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="35.0" text="\% IMG 1" />
+                        <Label layoutX="14.0" layoutY="69.0" text="\% IMG 2" />
+                        <Slider fx:id="sliderImg1" layoutX="73.0" layoutY="37.0" prefHeight="14.0" prefWidth="115.0" />
+                        <Slider fx:id="sliderImg2" layoutX="73.0" layoutY="71.0" prefHeight="14.0" prefWidth="116.0" />
+                        <Button layoutX="66.0" layoutY="108.0" mnemonicParsing="false" onAction="#adicao" prefHeight="25.0" prefWidth="67.0" text="Adição" />
+                        <Button layoutX="66.0" layoutY="153.0" mnemonicParsing="false" onAction="#subtracao" text="Subração" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </TitledPane>
+            <TitledPane animated="false" layoutX="10.0" layoutY="85.0" text="Ruidos">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="50.0" layoutY="131.0" mnemonicParsing="false" onAction="#removeRuidos" text="Remover Ruidos" />
+                        <RadioButton fx:id="cbVizC" layoutX="33.0" layoutY="14.0" mnemonicParsing="false" text="Vizinhos Cruz">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="rbTpRuido" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="cbVizX" layoutX="33.0" layoutY="37.0" mnemonicParsing="false" text="Vizinhos X" toggleGroup="$rbTpRuido" />
+                        <RadioButton fx:id="cbViz3x3" layoutX="33.0" layoutY="61.0" mnemonicParsing="false" text="Vizinhos 3x3" toggleGroup="$rbTpRuido" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </TitledPane>
+            <TitledPane animated="false" layoutX="10.0" layoutY="110.0" text="Equalização de Histograma">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#equalizacaoValidos" prefHeight="25.0" prefWidth="163.0" text="Eq. Usando Pixels Validos" />
+                        <Button layoutX="14.0" layoutY="50.0" mnemonicParsing="false" onAction="#equalizacao" prefHeight="25.0" prefWidth="163.0" text="Eq. Usando Todos os Pixels" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </TitledPane>
+            <TitledPane animated="false" layoutX="10.0" layoutY="135.0" text="Primeira Prova">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="19.0" layoutY="128.0" mnemonicParsing="false" onAction="#viraQuadrantes" prefHeight="25.0" prefWidth="163.0" text="Girar 180º" />
+                        <Label layoutX="36.0" layoutY="6.0" text="Selecione os quadrantes" />
+                        <Label layoutX="14.0" layoutY="38.0" text="Quadrante 1: " />
+                        <Label layoutX="14.0" layoutY="75.0" text="Quadrante 2: " />
+                        <TextField fx:id="txtQ1" layoutX="87.0" layoutY="34.0" prefHeight="25.0" prefWidth="95.0" />
+                        <TextField fx:id="txtQ2" layoutX="87.0" layoutY="71.0" prefHeight="25.0" prefWidth="95.0" />
+                        <Button layoutX="19.0" layoutY="176.0" mnemonicParsing="false" onAction="#divideDiagonal" prefHeight="25.0" prefWidth="163.0" text="Dividir Diagonal" />
+                        <Button layoutX="19.0" layoutY="224.0" mnemonicParsing="false" onAction="#checaQuadrado" prefHeight="25.0" prefWidth="163.0" text="Checa Retangulo" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </TitledPane>
+        </panes>
+      </Accordion>
+   </left>
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane prefHeight="527.0" prefWidth="364.0">
+              <content>
+                <AnchorPane>
+                     <children>
+                        <ImageView fx:id="imageview1" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <ScrollPane layoutX="10.0" layoutY="10.0" prefHeight="527.0" prefWidth="364.0">
+               <content>
+                  <AnchorPane>
+                     <children>
+                        <ImageView fx:id="imageview2" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+            <ScrollPane layoutX="210.0" layoutY="10.0" prefHeight="527.0" prefWidth="375.0">
+               <content>
+                  <AnchorPane>
+                     <children>
+                        <ImageView fx:id="imageview3" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
