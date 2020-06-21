@@ -727,13 +727,13 @@ public class Filtros {
 					 Pixel p = new Pixel(corA.getRed(), corA.getGreen(), corA.getBlue(), i, j);
 					 buscaVizinhos(imagem, p);
 					 Pixel vetor[] = null;
-					 if(tipoVizinhos == 1) {
+					 if(tipoVizinhos == Constantes.VIZINHOS3x3) {
 						 vetor = p.viz3;
 					 }
-					 if(tipoVizinhos == 2) {
+					 if(tipoVizinhos == Constantes.VIZINHOSCRUZ) {
 						 vetor = p.vizC;
 					 }
-					 if(tipoVizinhos == 3) {
+					 if(tipoVizinhos == Constantes.VIZINHOSX) {
 						 vetor = p.vizX;
 					 }
 					 double red = mediana(vetor, Constantes.CANALR);
@@ -751,7 +751,6 @@ public class Filtros {
 			e.printStackTrace();
 			return null;
 		}
-		
 	}
 	
 	private static void buscaVizinhos(Image imagem, Pixel p) {
